@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+class Images {
+  Images._();
+
+  static const loadingImage = "assets/images/loding_spinner.gif";
+}
+
 class Colors {
   Colors._();
 
