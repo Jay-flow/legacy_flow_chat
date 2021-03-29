@@ -33,7 +33,7 @@ class _SendMessageLayoutState extends State<SendMessageLayout> {
     final inputMessageWidth = deviceWidth - sendButtonWidth;
 
     return GestureDetector(
-      onTap: () => widget.sendMessage(messageController.text),
+      onTap: () => widget.sendMessage(messageController),
       child: Container(
         width: double.infinity,
         constraints: BoxConstraints(

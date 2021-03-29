@@ -1,27 +1,37 @@
 import 'package:flutter/material.dart';
-
 import 'circle_image.dart';
 
 class ChatMessageLayout extends StatelessWidget {
   final String message;
   final String userName;
   final String userImagePath;
+  final bool isMe;
 
-  ChatMessageLayout({this.message, this.userName, this.userImagePath});
+  ChatMessageLayout({
+    @required this.message,
+    @required this.userName,
+    this.isMe = false,
+    this.userImagePath,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final profileImage = isMe
+        ? SizedBox.shrink()
+        : CircleImage(
+            size: 50,
+            imagePath: this.userImagePath,
+          );
+    final alignment = isMe ? MainAxisAlignment.end : MainAxisAlignment.start;
+
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: alignment,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CircleImage(
-          size: 50,
-          imagePath: this.userImagePath,
-        ),
+        profileImage,
         Container(
           constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width / 1.6,
+            maxWidth: MediaQuery.of(context).size.width / 1.5,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
