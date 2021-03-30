@@ -1,5 +1,6 @@
 import 'package:flow_chat/components/chat_message_layout.dart';
 import 'package:flow_chat/components/send_message_layout.dart';
+import 'package:flow_chat/mocks/user.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {
@@ -16,7 +17,7 @@ class _ChatState extends State<Chat> {
     setState(() {
       messages.add(
         ChatMessageLayout(
-          userName: "Jay-flow",
+          userName: UserMock.user.nickName,
           message: controller.text,
           isMe: true,
         ),
