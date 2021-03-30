@@ -18,9 +18,17 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      color: backgroundColor,
-      padding: EdgeInsets.symmetric(vertical: 11),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: backgroundColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(100.0),
+          side: BorderSide(
+            color: Asset.Colors.white,
+          ),
+        ),
+        padding: EdgeInsets.symmetric(vertical: 11),
+      ),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
@@ -44,12 +52,6 @@ class LoginButton extends StatelessWidget {
         ],
       ),
       onPressed: onPressed,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(100.0),
-        side: BorderSide(
-          color: Asset.Colors.white,
-        ),
-      ),
     );
   }
 }

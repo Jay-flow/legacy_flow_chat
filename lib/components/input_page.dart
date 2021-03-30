@@ -45,9 +45,13 @@ class _InputPageState extends State<InputPage> {
               child: widget.body,
             ),
           ),
-          Button(
-            onPressed: () => widget.buttonOnPressed(_formKey),
-            buttonText: widget.buttonText,
+          SizedBox(
+            width: double.infinity,
+            height: 50,
+            child: Button(
+              onPressed: () => widget.buttonOnPressed(_formKey),
+              buttonText: widget.buttonText,
+            ),
           )
         ],
       ),

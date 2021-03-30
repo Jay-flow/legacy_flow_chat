@@ -19,15 +19,16 @@ class Button extends StatelessWidget {
     return ButtonTheme(
       minWidth: double.infinity,
       splashColor: Theme.of(context).accentColor,
-      height: 50.0,
-      child: RaisedButton(
-        splashColor: Colors.grey[200],
-        color: buttonColor,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: buttonColor,
+        ),
         onPressed: onPressed,
         child: Text(
           buttonText,
           style: TextStyle(
             fontWeight: fontWeight,
+            fontSize: 16,
             color: Colors.white,
           ),
         ),

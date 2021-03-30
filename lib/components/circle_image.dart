@@ -1,4 +1,3 @@
-import 'package:flow_chat/utils/asset.dart' as Asset;
 import 'package:flutter/material.dart';
 import 'package:flow_chat/utils/constants.dart';
 

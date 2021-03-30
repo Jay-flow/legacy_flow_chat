@@ -136,11 +136,15 @@ class _MyState extends State<My> {
                 ],
               ),
             ),
-            Button(
-              buttonColor: Theme.of(context).primaryColor,
-              onPressed: () {},
-              buttonText: 'VIP 회원 신청',
-              fontWeight: FontWeight.bold,
+            SizedBox(
+              height: 50,
+              width: double.infinity,
+              child: Button(
+                buttonColor: Theme.of(context).primaryColor,
+                onPressed: () {},
+                buttonText: 'VIP 회원 신청',
+                fontWeight: FontWeight.bold,
+              ),
             )
           ],
         ),
