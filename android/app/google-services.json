@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "218849873846",
+    "project_id": "flow-chat-2cf80",
+    "storage_bucket": "flow-chat-2cf80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218849873846:android:702a630d5acddceff4bb17",
+        "android_client_info": {
+          "package_name": "dev.flow.jay.flow_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "218849873846-6qotbfbi10hl6e5jqdqek0eie2mk6c36.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfXzXbQzdHNAv-8eEu3b7ZZPQhgyFlgco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "218849873846-6qotbfbi10hl6e5jqdqek0eie2mk6c36.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "218849873846-8hgc1eueji4fnarlcm709ttflq1nm2tm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.flow.jay.flowChat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
