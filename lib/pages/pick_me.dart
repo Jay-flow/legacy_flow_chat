@@ -1,6 +1,6 @@
-import 'package:flow/components/ink_well_for_image.dart';
-import 'package:flow/components/pick_me_profile_card.dart';
-import 'package:flow/components/pick_me_top_notification.dart';
+import 'package:flow_chat/components/ink_well_for_image.dart';
+import 'package:flow_chat/components/pick_me_profile_card.dart';
+import 'package:flow_chat/components/pick_me_top_notification.dart';
 import 'package:flutter/material.dart';
 
 class PickMe extends StatefulWidget {

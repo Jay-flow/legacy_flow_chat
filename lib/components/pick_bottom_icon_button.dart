@@ -1,4 +1,4 @@
-import 'package:flow/components/circle_icon_button.dart';
+import 'package:flow_chat/components/circle_icon_button.dart';
 import 'package:flutter/material.dart';
 
 class PickBottomIconButton extends StatelessWidget {

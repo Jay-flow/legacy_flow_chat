@@ -1,6 +1,5 @@
-import 'package:flow/screens/my.dart';
-import 'package:flow/screens/pick.dart';
-import 'package:flow/utils/settings.dart';
+import 'package:flow_chat/pages/my.dart';
+import 'package:flow_chat/pages/pick.dart';
 import 'package:flutter/material.dart';
 
 import 'match_bottom_tab.dart';
@@ -25,7 +24,6 @@ class _MainTopTabState extends State<MainTopTab>
   @override
   void initState() {
     super.initState();
-    setStatusBarColor();
     _tabController = TabController(
       vsync: this,
       length: topMenuWidgets.length,

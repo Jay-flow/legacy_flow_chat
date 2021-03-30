@@ -1,6 +1,6 @@
-import 'package:flow/components/input_page.dart';
-import 'package:flow/components/underline_text_field.dart';
-import 'package:flow/utils/constants.dart';
+import 'package:flow_chat/components/input_page.dart';
+import 'package:flow_chat/components/underline_text_field.dart';
+import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

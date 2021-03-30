@@ -1,5 +1,6 @@
 import 'package:flow_chat/utils/asset.dart' as Asset;
 import 'package:flutter/material.dart';
+import 'package:flow_chat/utils/constants.dart';
 
 class CircleImage extends StatelessWidget {
   final String imagePath;
@@ -17,7 +18,7 @@ class CircleImage extends StatelessWidget {
         fit: BoxFit.cover,
         width: size,
         height: size,
-        placeholder: Asset.Images.loadingImage,
+        placeholder: kLoadingImagePath,
         image: imagePath,
       ),
     );

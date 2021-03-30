@@ -1,10 +1,9 @@
-import 'package:flow/screens/register_age.dart';
-import 'package:flow/screens/register_gender.dart';
-import 'package:flow/screens/register_job.dart';
-import 'package:flow/screens/register_nickname.dart';
-import 'package:flow/screens/register_phone_number.dart';
-import 'package:flow/utils/asset.dart' as Asset;
-import 'package:flow/utils/settings.dart';
+import 'register_age.dart';
+import 'register_gender.dart';
+import 'register_job.dart';
+import 'register_phone_number.dart';
+import 'register_nickname.dart';
+import 'package:flow_chat/utils/asset.dart' as Asset;
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -29,7 +28,7 @@ class _RegisterState extends State<Register> {
   @override
   void initState() {
     super.initState();
-    setStatusBarColor();
+
     pages = [
       RegisterPhoneNumber(next: nextPage),
       RegisterNickname(next: nextPage),

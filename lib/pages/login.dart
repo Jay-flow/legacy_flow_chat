@@ -1,10 +1,10 @@
 import 'dart:io' show Platform;
 
-import 'package:flow/components/login_button.dart';
-import 'package:flow/components/policy_info.dart';
-import 'package:flow/screens/register.dart';
-import 'package:flow/utils/asset.dart' as Asset;
-import 'package:flow/utils/constants.dart';
+import 'package:flow_chat/components/login_button.dart';
+import 'package:flow_chat/components/policy_info.dart';
+import 'package:flow_chat/pages/register.dart';
+import 'package:flow_chat/utils/asset.dart' as Asset;
+import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

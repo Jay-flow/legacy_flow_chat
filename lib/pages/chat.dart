@@ -3,12 +3,15 @@ import 'package:flow_chat/components/send_message_layout.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {
+  static const id = "chat";
+
   @override
   _ChatState createState() => _ChatState();
 }
 
 class _ChatState extends State<Chat> {
   List<Widget> messages = [];
+
   void sendMessage(TextEditingController controller) {
     setState(() {
       messages.add(
@@ -24,12 +27,12 @@ class _ChatState extends State<Chat> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Chat"),
-        ),
-        body: Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Chat"),
+      ),
+      body: SafeArea(
+        child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Expanded(

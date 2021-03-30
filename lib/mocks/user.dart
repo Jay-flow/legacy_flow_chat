@@ -1,4 +1,4 @@
-import 'package:flow/models/user.dart';
+import 'package:flow_chat/models/user.dart';
 
 class UserMock {
   UserMock._();

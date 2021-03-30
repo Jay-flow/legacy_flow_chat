@@ -1,5 +1,5 @@
-import 'package:flow/screens/message.dart';
-import 'package:flow/screens/pick_me.dart';
+import 'package:flow_chat/pages/message.dart';
+import 'package:flow_chat/pages/pick_me.dart';
 import 'package:flutter/material.dart';
 
 class MatchBottomTab extends StatefulWidget {

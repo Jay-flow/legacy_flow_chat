@@ -1,5 +1,5 @@
-import 'package:flow/models/radio_model.dart';
-import 'package:flow/utils/asset.dart' as Asset;
+import 'package:flow_chat/models/radio_model.dart';
+import 'package:flow_chat/utils/asset.dart' as Asset;
 import 'package:flutter/material.dart';
 
 class RadioButton extends StatefulWidget {

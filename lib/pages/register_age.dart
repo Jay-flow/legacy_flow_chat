@@ -1,6 +1,5 @@
-import 'package:flow/components/input_page.dart';
-import 'package:flow/utils/asset.dart' as Asset;
-import 'package:flow/utils/constants.dart';
+import 'package:flow_chat/components/input_page.dart';
+import 'package:flow_chat/utils/asset.dart' as Asset;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -19,14 +18,14 @@ class _RegisterAgeState extends State<RegisterAge> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: kInputPagePadding,
+      padding: EdgeInsets.all(30.0),
       child: InputPage(
         title: "나이",
         body: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            NumberPicker.integer(
+            NumberPicker(
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
@@ -39,7 +38,7 @@ class _RegisterAgeState extends State<RegisterAge> {
                   ),
                 ),
               ),
-              initialValue: _currentPickAge,
+              value: _currentPickAge,
               minValue: 15,
               maxValue: 70,
               onChanged: (newValue) => setState(

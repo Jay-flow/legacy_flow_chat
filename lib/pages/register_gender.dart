@@ -1,8 +1,8 @@
-import 'package:flow/components/input_page.dart';
-import 'package:flow/components/radio_button.dart';
-import 'package:flow/models/radio_model.dart';
-import 'package:flow/navigations/main_top_tab.dart';
-import 'package:flow/utils/constants.dart';
+import 'package:flow_chat/components/input_page.dart';
+import 'package:flow_chat/components/radio_button.dart';
+import 'package:flow_chat/models/radio_model.dart';
+import 'package:flow_chat/navigations/main_top_tab.dart';
+import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class RegisterGender extends StatefulWidget {
@@ -15,7 +15,7 @@ class RegisterGender extends StatefulWidget {
 }
 
 class _RegisterGenderState extends State<RegisterGender> {
-  List<RadioModel> genderData = List<RadioModel>();
+  List<RadioModel> genderData = [];
 
   @override
   void initState() {

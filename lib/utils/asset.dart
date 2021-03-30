@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Images {
-  Images._();
-
-  static const loadingImage = "assets/images/loding_spinner.gif";
+class Icons {
+  Icons._();
+  static Image icKakao = Image.asset(
+    'assets/icons/ic_kakao.png',
+    scale: 2,
+  );
+  static Image icApple = Image.asset('assets/icons/ic_apple.png', scale: 2.4);
+  static Image icFacebook =
+      Image.asset('assets/icons/ic_facebook.png', scale: 2);
 }
 
 class Colors {

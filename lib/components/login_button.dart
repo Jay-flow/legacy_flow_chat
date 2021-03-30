@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flow/utils/asset.dart' as Asset;
+import 'package:flow_chat/utils/asset.dart' as Asset;
 
 class LoginButton extends StatelessWidget {
   LoginButton({

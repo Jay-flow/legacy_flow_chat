@@ -1,3 +1,4 @@
+import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class PickCard extends StatelessWidget {
@@ -23,7 +24,7 @@ class PickCard extends StatelessWidget {
         ),
         child: FadeInImage.assetNetwork(
           fit: BoxFit.cover,
-          placeholder: 'res/images/loding_spinner.gif',
+          placeholder: kLoadingImagePath,
           image:
               'https://image.chosun.com/sitedata/image/201905/19/2019051900415_0.jpg',
         ),

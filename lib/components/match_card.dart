@@ -1,4 +1,4 @@
-import 'package:flow/components/pick_card.dart';
+import 'package:flow_chat/components/pick_card.dart';
 import 'package:flutter/material.dart';
 
 enum SlideDirection {

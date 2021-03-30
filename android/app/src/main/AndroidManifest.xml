@@ -2,6 +2,7 @@
     package="dev.flow.jay.flow_chat">
    <application
         android:label="flow_chat"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

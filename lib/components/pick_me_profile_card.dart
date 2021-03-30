@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class PickMeProfileCard extends StatelessWidget {
@@ -33,7 +33,7 @@ class PickMeProfileCard extends StatelessWidget {
           children: <Widget>[
             FadeInImage.assetNetwork(
               fit: BoxFit.cover,
-              placeholder: 'res/images/loding_spinner.gif',
+              placeholder: kLoadingImagePath,
               image: profileImagePath,
             ),
             isVIP
