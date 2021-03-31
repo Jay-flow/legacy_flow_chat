@@ -39,18 +39,21 @@ class _UnderlineTextFieldState extends State<UnderlineTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      validator: widget.validator,
-      controller: _textController,
-      obscureText: widget.obscureText,
-      textAlign: widget.textAlign,
-      keyboardType: widget.keyboardType,
-      decoration: kTextFieldDecoration.copyWith(
-        hintText: widget.hintText,
+    return Container(
+      height: 75,
+      child: TextFormField(
+        validator: widget.validator,
+        controller: _textController,
+        obscureText: widget.obscureText,
+        textAlign: widget.textAlign,
+        keyboardType: widget.keyboardType,
+        decoration: kTextFieldDecoration.copyWith(
+          hintText: widget.hintText,
+        ),
+        onTap: widget.onTab,
+        onChanged: widget.onChanged,
+        inputFormatters: widget.inputFormatters,
       ),
-      onTap: widget.onTab,
-      onChanged: widget.onChanged,
-      inputFormatters: widget.inputFormatters,
     );
   }
 }

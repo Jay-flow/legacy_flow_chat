@@ -48,7 +48,7 @@ class FlowChat extends StatelessWidget {
                 ),
               ),
             ),
-            home: Login(),
+            home: Register(),
             getPages: [
               GetPage(name: MainTopTab.name, page: () => MainTopTab()),
               GetPage(name: Login.name, page: () => Login()),

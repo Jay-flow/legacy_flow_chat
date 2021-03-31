@@ -4,49 +4,52 @@ import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class RegisterNickname extends StatefulWidget {
-  RegisterNickname({
+class RegisterPhoneAuth extends StatefulWidget {
+  RegisterPhoneAuth({
     @required this.next,
+    @required this.verifyAuthNumber,
   });
 
   final Function next;
+  final Function verifyAuthNumber;
 
   @override
-  _RegisterNicknameState createState() => _RegisterNicknameState();
+  _RegisterPhoneAuthState createState() => _RegisterPhoneAuthState();
 }
 
-class _RegisterNicknameState extends State<RegisterNickname> {
+class _RegisterPhoneAuthState extends State<RegisterPhoneAuth> {
+  String authNumber;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: kInputPagePadding,
       child: InputPage(
-        title: '닉네임',
+        title: '인증 번호',
         body: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             UnderlineTextField(
               validator: (String value) {
-                if (value.length > 5)
-                  return '닉네임이 너무깁니다. (5자 이하로 입력)';
-                else
-                  return null;
+                if (value == '') return '인증 번호를 입력해주세요';
+                return null;
               },
-              keyboardType: TextInputType.text,
-              hintText: '닉네임을 입력해주세요.',
-              onChanged: (name) => null,
+              keyboardType: TextInputType.phone,
+              hintText: '인증 번호를 입력해주세요',
+              onChanged: (authNumber) => this.authNumber = authNumber.trim(),
               textValue: '',
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
             SizedBox(
               height: 70,
             )
           ],
         ),
-        buttonText: '다음',
+        buttonText: '인증하기',
         buttonOnPressed: (GlobalKey<FormState> key) {
           if (key.currentState.validate()) {
-            widget.next();
-          } else {}
+            widget.verifyAuthNumber(this.authNumber);
+          }
         },
       ),
     );

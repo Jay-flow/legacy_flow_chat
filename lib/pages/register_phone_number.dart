@@ -1,22 +1,26 @@
 import 'package:flow_chat/components/input_page.dart';
 import 'package:flow_chat/components/underline_text_field.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class RegisterPhoneNumber extends StatefulWidget {
-  RegisterPhoneNumber({@required this.next});
+  RegisterPhoneNumber({
+    @required this.next,
+    @required this.phoneAuthMessage,
+    @required this.inputLimitTimer,
+  });
 
   final Function next;
+  final Function phoneAuthMessage;
+  final Function inputLimitTimer;
 
   @override
   _RegisterPhoneNumberState createState() => _RegisterPhoneNumberState();
 }
 
 class _RegisterPhoneNumberState extends State<RegisterPhoneNumber> {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  bool _isLoading = false;
+  String phoneNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +33,12 @@ class _RegisterPhoneNumberState extends State<RegisterPhoneNumber> {
           children: <Widget>[
             UnderlineTextField(
               validator: (String value) {
-                if (value == '')
-                  return '번호를 입력해주세요';
-                else
-                  return null;
+                if (value == '') return '번호를 입력해주세요';
+                return null;
               },
               keyboardType: TextInputType.phone,
               hintText: '휴대폰 번호를 입력해주세요 (\'-\'제외)',
-              onChanged: (phoneNumber) => null,
+              onChanged: (phoneNumber) => this.phoneNumber = phoneNumber.trim(),
               textValue: '',
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
@@ -47,13 +49,11 @@ class _RegisterPhoneNumberState extends State<RegisterPhoneNumber> {
         ),
         buttonText: '인증하기',
         buttonOnPressed: (GlobalKey<FormState> key) {
-//            if (_isPhoneAuth) {
-//              if (key.currentState.validate()) {
-//                _phoneAuthMessage();
-//              }
-//            } else {
-//              nextPage();
-//            }
+          if (key.currentState.validate()) {
+            widget.phoneAuthMessage(phoneNumber);
+            widget.inputLimitTimer();
+            widget.next();
+          }
         },
       ),
     );
