@@ -47,7 +47,7 @@ class FlowChat extends StatelessWidget {
                 ),
               ),
             ),
-            initialRoute: MainTopTab.id,
+            initialRoute: Login.id,
             routes: {
               Chat.id: (context) => Chat(),
               Login.id: (context) => Login(),

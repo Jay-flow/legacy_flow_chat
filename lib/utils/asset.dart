@@ -9,6 +9,11 @@ class Icons {
   static Image icApple = Image.asset('assets/icons/ic_apple.png', scale: 2.4);
   static Image icFacebook =
       Image.asset('assets/icons/ic_facebook.png', scale: 2);
+  static Image icPhone = Image.asset(
+    'assets/icons/ic_phone.png',
+    scale: 2,
+    color: Colors.white,
+  );
 }
 
 class Colors {

@@ -59,7 +59,6 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
       body: Container(
         decoration: kGradientBackground,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
               child: Center(
@@ -89,27 +88,33 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                       vertical: 20.0,
                       horizontal: 30.0,
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        Platform.isIOS
-                            ? _appleLoginButton()
-                            : _faceLoginButton(),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        LoginButton(
-                          icon: Asset.Icons.icKakao,
-                          onPressed: () {
-                            return _moveRegisterPage();
-                          },
-                          label: '카카오 로그인',
-                          textColor: Asset.Colors.white,
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                      ],
+                    child: SizedBox(
+                      height: 210,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Platform.isIOS
+                              ? _appleLoginButton()
+                              : _faceLoginButton(),
+                          LoginButton(
+                            icon: Asset.Icons.icKakao,
+                            onPressed: () {
+                              return _moveRegisterPage();
+                            },
+                            label: '카카오 로그인',
+                            textColor: Asset.Colors.white,
+                          ),
+                          LoginButton(
+                            icon: Asset.Icons.icPhone,
+                            onPressed: () {
+                              return _moveRegisterPage();
+                            },
+                            label: '전화번호 로그인',
+                            textColor: Asset.Colors.white,
+                          ),
+                        ],
+                      ),
                     ),
                   )
                 ],
