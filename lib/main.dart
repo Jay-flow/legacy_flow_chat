@@ -7,6 +7,7 @@ import 'package:flow_chat/utils/asset.dart' as Asset;
 import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +27,7 @@ class FlowChat extends StatelessWidget {
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
-          return MaterialApp(
+          return GetMaterialApp(
             title: kAppName,
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
@@ -47,14 +48,13 @@ class FlowChat extends StatelessWidget {
                 ),
               ),
             ),
-            initialRoute: Login.id,
-            routes: {
-              Chat.id: (context) => Chat(),
-              Login.id: (context) => Login(),
-              Register.id: (context) => Register(),
-              MainTopTab.id: (context) => MainTopTab(),
-              Settings.id: (context) => Settings()
-            },
+            home: Login(),
+            getPages: [
+              GetPage(name: MainTopTab.name, page: () => MainTopTab()),
+              GetPage(name: Login.name, page: () => Login()),
+              GetPage(name: Register.name, page: () => Register()),
+              GetPage(name: Settings.name, page: () => Settings()),
+            ],
           );
         }
 

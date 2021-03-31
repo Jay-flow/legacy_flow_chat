@@ -4,6 +4,7 @@ import 'package:flow_chat/models/radio_model.dart';
 import 'package:flow_chat/navigations/main_top_tab.dart';
 import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RegisterGender extends StatefulWidget {
   RegisterGender({@required this.next});
@@ -53,7 +54,7 @@ class _RegisterGenderState extends State<RegisterGender> {
         ),
         buttonText: '완료',
         buttonOnPressed: (GlobalKey<FormState> key) async {
-          Navigator.pushReplacementNamed(context, MainTopTab.id);
+          Get.toNamed(MainTopTab.name);
         },
       ),
     );

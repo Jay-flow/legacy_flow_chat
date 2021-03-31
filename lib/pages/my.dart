@@ -6,10 +6,9 @@ import 'package:flow_chat/pages/settings.dart';
 import 'package:flow_chat/utils/asset.dart' as Asset;
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:get/get.dart';
 
 class My extends StatefulWidget {
-  static const String id = 'my';
-
   @override
   _MyState createState() => _MyState();
 }
@@ -110,10 +109,7 @@ class _MyState extends State<My> {
                           margin: EdgeInsets.only(bottom: 50.0, left: 15.0),
                           child: CircleIconButton(
                             icon: Icons.settings,
-                            onPressed: () => Navigator.pushNamed(
-                              context,
-                              Settings.id,
-                            ),
+                            onPressed: () => Get.toNamed(Settings.name),
                           ),
                         ),
                         Container(

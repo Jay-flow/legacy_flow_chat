@@ -1,5 +1,6 @@
 import 'package:flow_chat/components/input_page.dart';
 import 'package:flow_chat/components/underline_text_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +15,9 @@ class RegisterPhoneNumber extends StatefulWidget {
 }
 
 class _RegisterPhoneNumberState extends State<RegisterPhoneNumber> {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +38,7 @@ class _RegisterPhoneNumberState extends State<RegisterPhoneNumber> {
               hintText: '휴대폰 번호를 입력해주세요 (\'-\'제외)',
               onChanged: (phoneNumber) => null,
               textValue: '',
-              inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
             SizedBox(
               height: 70,

@@ -6,10 +6,11 @@ import 'package:flow_chat/pages/register.dart';
 import 'package:flow_chat/utils/asset.dart' as Asset;
 import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Login extends StatefulWidget {
-  static const String id = 'login';
+  static const String name = "/login";
 
   @override
   _LoginState createState() => _LoginState();
@@ -51,7 +52,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
     );
   }
 
-  _moveRegisterPage() => Navigator.pushReplacementNamed(context, Register.id);
+  _moveRegisterPage() => Get.toNamed(Register.name);
 
   @override
   Widget build(BuildContext context) {

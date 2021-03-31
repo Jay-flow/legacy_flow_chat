@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'match_bottom_tab.dart';
 
 class MainTopTab extends StatefulWidget {
-  static const String id = 'main_top_tab';
+  static const String name = '/main_top_tab';
 
   @override
   _MainTopTabState createState() => _MainTopTabState();

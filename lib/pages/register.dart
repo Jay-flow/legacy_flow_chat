@@ -7,7 +7,7 @@ import 'package:flow_chat/utils/asset.dart' as Asset;
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
-  static const String id = 'register';
+  static const String name = "/register";
 
   @override
   _RegisterState createState() => _RegisterState();
