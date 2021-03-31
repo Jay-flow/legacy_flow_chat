@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flow_chat/components/loading_container.dart';
 import 'package:flow_chat/pages/register_phone_auth.dart';
+import 'package:flow_chat/utils/constants.dart';
+import 'package:get/get.dart';
 
 import 'register_age.dart';
 import 'register_gender.dart';
@@ -44,11 +46,7 @@ class _RegisterState extends State<Register> {
 
   _alreadyRegisteredUserHandling() async {
     _isAlreadyRegister = true;
-    // Fluttertoast.showToast(
-    //   msg: "이미 가입된 회원 정보가 있습니다.",
-    //   toastLength: Toast.LENGTH_LONG,
-    //   backgroundColor: kToastBackgroundColor,
-    // );
+    Get.snackbar(kAppName, "이미 가입된 회원 정보가 있습니다.");
     // await user.localUserDataSave();
     // Navigator.pushReplacementNamed(context, PrayerInUs.id);
   }
@@ -56,18 +54,12 @@ class _RegisterState extends State<Register> {
   _phoneVerificationCompleted(PhoneAuthCredential credential) async {
     try {
       await _firebaseAuth.signInWithCredential(credential);
-      if (await _isExistUser()) return _alreadyRegisteredUserHandling();
-      // Fluttertoast.showToast(
-      //   msg: '인증되었습니다.',
-      //   backgroundColor: kToastBackgroundColor,
-      // );
-      // nextPage();
+      // if (await _isExistUser()) return _alreadyRegisteredUserHandling();
+      Get.snackbar(kAppName, "인증되었습니다.");
+      nextPage();
     } on FirebaseAuthException catch (e) {
       if (e.code == "invalid-verification-code") {
-        // Fluttertoast.showToast(
-        //   msg: "인증번호가 맞지 않습니다. 한번더 확인 후 입력해주세요.",
-        //   backgroundColor: kToastBackgroundColor,
-        // );
+        Get.snackbar(kAppName, "인증번호가 맞지 않습니다.\n한번더 확인 후 입력해주세요.");
       } else {
         _phoneAuthFail("인증과정 중 에러가 발생했습니다");
       }
@@ -82,10 +74,7 @@ class _RegisterState extends State<Register> {
   _phoneVerificationFailed(FirebaseAuthException e) {
     if (e.code == 'invalid-phone-number') {
       _loadingStateChange(false);
-      // Fluttertoast.showToast(
-      //   msg: '잘못된 휴대폰 번호를 입력하셨습니다.',
-      //   backgroundColor: kToastBackgroundColor,
-      // );
+      Get.snackbar(kAppName, "잘못된 휴대폰 번호를 입력하셨습니다.");
     } else {
       _phoneAuthFail("인증과정 중 에러가 발생했습니다");
     }
@@ -115,10 +104,7 @@ class _RegisterState extends State<Register> {
   }
 
   _phoneAuthFail(String message) {
-    // Fluttertoast.showToast(
-    //   msg: message,
-    //   backgroundColor: kToastBackgroundColor,
-    // );
+    Get.snackbar(kAppName, message);
     _previousPage();
     _timer.cancel();
     _inputLimitTime = INPUT_LIMIT_TIME;
