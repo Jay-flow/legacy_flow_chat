@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CircleIconButton extends StatelessWidget {
   CircleIconButton({
     this.iconColor = Colors.grey,
-    this.iconSize = 25.0,
+    this.iconSize = 30.0,
     this.onPressed,
     @required this.icon,
   });

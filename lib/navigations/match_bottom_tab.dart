@@ -43,12 +43,7 @@ class _MatchBottomTabState extends State<MatchBottomTab> {
               Icons.record_voice_over,
               size: 30.0,
             ),
-            title: Text(
-              'Pick Me',
-              style: TextStyle(
-                color: Theme.of(context).primaryColorDark,
-              ),
-            ),
+            label: 'Pick Me',
           ),
           BottomNavigationBarItem(
             icon: Padding(
@@ -58,12 +53,7 @@ class _MatchBottomTabState extends State<MatchBottomTab> {
                 size: 30.0,
               ),
             ),
-            title: Text(
-              'Message',
-              style: TextStyle(
-                color: Theme.of(context).primaryColorDark,
-              ),
-            ),
+            label: 'Message',
           )
         ],
       ),
