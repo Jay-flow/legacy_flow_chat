@@ -58,6 +58,9 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:multidex:1.0.3'
+    // https://github.com/FirebaseExtended/flutterfire/issues/4651 인증 버그 때문에 밑에 두줄 추가함
+    implementation "androidx.browser:browser:1.2.0"
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
 }
 
 apply plugin: 'com.google.gms.google-services'
