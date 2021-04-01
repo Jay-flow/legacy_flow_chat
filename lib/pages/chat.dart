@@ -15,7 +15,7 @@ class _ChatState extends State<Chat> {
     setState(() {
       messages.add(
         ChatMessageLayout(
-          userName: UserMock.user.nickName,
+          userName: UserMock.user.name,
           message: controller.text,
           isMe: true,
         ),

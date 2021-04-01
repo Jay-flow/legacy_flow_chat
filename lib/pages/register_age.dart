@@ -1,13 +1,18 @@
 import 'package:flow_chat/components/input_page.dart';
+import 'package:flow_chat/models/user.dart';
 import 'package:flow_chat/utils/asset.dart' as Asset;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class RegisterAge extends StatefulWidget {
-  RegisterAge({@required this.next});
+  RegisterAge({
+    @required this.next,
+    @required this.user,
+  });
 
   final Function next;
+  final User user;
 
   @override
   _RegisterAgeState createState() => _RegisterAgeState();
@@ -53,6 +58,7 @@ class _RegisterAgeState extends State<RegisterAge> {
         buttonText: '다음',
         buttonOnPressed: (GlobalKey<FormState> key) {
           if (key.currentState.validate()) {
+            widget.user.age = _currentPickAge;
             widget.next();
           } else {}
         },

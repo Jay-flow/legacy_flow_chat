@@ -6,11 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class RegisterPhoneNumber extends StatefulWidget {
-  RegisterPhoneNumber({
-    @required this.next,
-    @required this.phoneAuthMessage,
-    @required this.user
-  });
+  RegisterPhoneNumber(
+      {@required this.next,
+      @required this.phoneAuthMessage,
+      @required this.user});
 
   final Function next;
   final Function phoneAuthMessage;
@@ -37,9 +36,8 @@ class _RegisterPhoneNumberState extends State<RegisterPhoneNumber> {
               },
               keyboardType: TextInputType.phone,
               hintText: '휴대폰 번호를 입력해주세요 (\'-\'제외)',
-              onChanged: (phoneNumber) {
-                widget.user.phoneNumber = phoneNumber.trim();
-              },
+              onChanged: (phoneNumber) =>
+                  widget.user.phoneNumber = phoneNumber.trim(),
               textValue: widget.user.phoneNumber,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),

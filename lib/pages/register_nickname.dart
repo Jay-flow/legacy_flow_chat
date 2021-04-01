@@ -1,5 +1,6 @@
 import 'package:flow_chat/components/input_page.dart';
 import 'package:flow_chat/components/underline_text_field.dart';
+import 'package:flow_chat/models/user.dart';
 import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,9 +8,11 @@ import 'package:flutter/services.dart';
 class RegisterNickname extends StatefulWidget {
   RegisterNickname({
     @required this.next,
+    @required this.user,
   });
 
   final Function next;
+  final User user;
 
   @override
   _RegisterNicknameState createState() => _RegisterNicknameState();
@@ -34,8 +37,8 @@ class _RegisterNicknameState extends State<RegisterNickname> {
               },
               keyboardType: TextInputType.text,
               hintText: '닉네임을 입력해주세요.',
-              onChanged: (name) => null,
-              textValue: '',
+              onChanged: (name) => widget.user.name = name,
+              textValue: widget.user.name,
             ),
             SizedBox(
               height: 70,
@@ -46,7 +49,7 @@ class _RegisterNicknameState extends State<RegisterNickname> {
         buttonOnPressed: (GlobalKey<FormState> key) {
           if (key.currentState.validate()) {
             widget.next();
-          } else {}
+          }
         },
       ),
     );

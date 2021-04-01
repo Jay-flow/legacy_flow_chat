@@ -57,7 +57,7 @@ class _MyState extends State<My> {
               ),
             ),
             Text(
-              UserMock.user.nickName,
+              UserMock.user.name,
               style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
             ),
             Text(

@@ -1,13 +1,15 @@
 import 'package:flow_chat/components/input_page.dart';
 import 'package:flow_chat/components/underline_text_field.dart';
+import 'package:flow_chat/models/user.dart';
 import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class RegisterJob extends StatefulWidget {
-  RegisterJob({@required this.next});
+  RegisterJob({@required this.next, @required this.user});
 
   final Function next;
+  final User user;
 
   @override
   _RegisterJobState createState() => _RegisterJobState();
@@ -32,8 +34,8 @@ class _RegisterJobState extends State<RegisterJob> {
               },
               keyboardType: TextInputType.text,
               hintText: '직업 또는 전공을 입력해주세요.',
-              onChanged: (name) => null,
-              textValue: '',
+              onChanged: (job) => widget.user.job = job,
+              textValue: widget.user.job,
             ),
             SizedBox(
               height: 70,
