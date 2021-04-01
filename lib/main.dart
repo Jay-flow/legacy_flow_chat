@@ -1,12 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flow_chat/components/loading_container.dart';
+import 'package:flow_chat/controllers/user_controller.dart';
 import 'package:flow_chat/navigations/main_top_tab.dart';
-import 'package:flow_chat/pages/chat.dart';
 import 'package:flow_chat/pages/login.dart';
 import 'package:flow_chat/pages/register.dart';
 import 'package:flow_chat/pages/settings.dart';
 import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -14,52 +15,75 @@ void main() {
   runApp(FlowChat());
 }
 
-class FlowChat extends StatelessWidget {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+class FlowChat extends StatefulWidget {
+  @override
+  _FlowChatState createState() => _FlowChatState();
+}
+
+class _FlowChatState extends State<FlowChat> {
+  final bool _isDebugShowCheckedModeBanner = false;
+  bool _isLoading = true;
+  bool _isExistentUser = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _init();
+  }
+
+  void _init() async {
+    await Firebase.initializeApp();
+    await _findUser();
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  Future<void> _findUser() async {
+    UserController userController = Get.put(UserController());
+    final String phoneNumber = await userController.getLocalUserData();
+    if (phoneNumber != null) {
+      _isExistentUser = await userController.isExistentUser(phoneNumber);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _initialization,
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return Container();
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          return GetMaterialApp(
-            title: appName,
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              primaryColor: asset.Colors.hotPink,
-              accentColor: asset.Colors.pastelGreen,
-              primaryColorDark: asset.Colors.blueBlack,
-              primaryColorLight: asset.Colors.skyBlue,
-              appBarTheme: AppBarTheme(
-                color: Colors.white,
-                textTheme: TextTheme(
-                  headline6: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                  ),
-                ),
-                iconTheme: IconThemeData(
-                  color: Colors.black,
-                ),
-              ),
+    return GetMaterialApp(
+      title: appName,
+      debugShowCheckedModeBanner: _isDebugShowCheckedModeBanner,
+      theme: ThemeData(
+        primaryColor: asset.Colors.hotPink,
+        accentColor: asset.Colors.pastelGreen,
+        primaryColorDark: asset.Colors.blueBlack,
+        primaryColorLight: asset.Colors.skyBlue,
+        appBarTheme: AppBarTheme(
+          color: Colors.white,
+          textTheme: TextTheme(
+            headline6: TextStyle(
+              color: Colors.black,
+              fontSize: 20.0,
             ),
-            home: Register(),
-            getPages: [
-              GetPage(name: MainTopTab.name, page: () => MainTopTab()),
-              GetPage(name: Login.name, page: () => Login()),
-              GetPage(name: Register.name, page: () => Register()),
-              GetPage(name: Settings.name, page: () => Settings()),
-            ],
-          );
-        }
-
-        return Container();
-      },
+          ),
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+        ),
+      ),
+      home: LoadingContainer(
+        isLoading: _isLoading,
+        child: _isLoading
+            ? SizedBox.shrink()
+            : _isExistentUser
+                ? MainTopTab()
+                : Register(),
+      ),
+      getPages: [
+        GetPage(name: MainTopTab.name, page: () => MainTopTab()),
+        GetPage(name: Login.name, page: () => Login()),
+        GetPage(name: Register.name, page: () => Register()),
+        GetPage(name: Settings.name, page: () => Settings()),
+      ],
     );
   }
 }

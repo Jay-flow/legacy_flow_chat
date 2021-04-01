@@ -60,7 +60,7 @@ class _RegisterState extends State<Register> {
   Future<void> _signUp() async {
     UserController userController = Get.put(UserController());
     userController.updateUser(user);
-    await userController.localUserDataSave();
+    await userController.setLocalUserData();
     await userController.cloudUserDataSave();
   }
 
