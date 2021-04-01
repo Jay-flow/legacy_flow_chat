@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flow_chat/components/loading_container.dart';
+import 'package:flow_chat/controllers/user_controller.dart';
 import 'package:flow_chat/models/user.dart' as model;
-import 'package:flow_chat/navigations/main_top_tab.dart';
 import 'package:flow_chat/pages/register_phone_auth.dart';
 import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flow_chat/utils/firebase_authentication.dart';
@@ -37,6 +36,13 @@ class _RegisterState extends State<Register> {
     );
   }
 
+  void _previousPage() {
+    _pageController.previousPage(
+      curve: Curves.easeInOut,
+      duration: Duration(milliseconds: 200),
+    );
+  }
+
   void _onFailAuth() {
     _previousPage();
     setState(() {
@@ -44,16 +50,18 @@ class _RegisterState extends State<Register> {
     });
   }
 
-  void userInputDone() {
-    print(user);
+  void userInputDone() async {
+    _loadingStateChange(true);
+    await _signUp();
+    _loadingStateChange(false);
     // Get.toNamed(MainTopTab.name);
   }
 
-  void _previousPage() {
-    _pageController.previousPage(
-      curve: Curves.easeInOut,
-      duration: Duration(milliseconds: 200),
-    );
+  Future<void> _signUp() async {
+    UserController userController = Get.put(UserController());
+    userController.updateUser(user);
+    await userController.localUserDataSave();
+    await userController.cloudUserDataSave();
   }
 
   @override
