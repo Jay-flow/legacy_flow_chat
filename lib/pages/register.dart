@@ -51,7 +51,6 @@ class _RegisterState extends State<Register> {
     );
   }
 
-
   @override
   void initState() {
     super.initState();
@@ -63,10 +62,9 @@ class _RegisterState extends State<Register> {
     model.User user = model.User();
     pages = [
       RegisterPhoneNumber(
-        next: _nextPage,
-        phoneAuthMessage: firebaseAuthentication.phoneAuthMessage,
-        user: user
-      ),
+          next: _nextPage,
+          phoneAuthMessage: firebaseAuthentication.phoneAuthMessage,
+          user: user),
       RegisterPhoneAuth(
         next: _nextPage,
         firebaseAuthentication: firebaseAuthentication,
@@ -103,6 +101,7 @@ class _RegisterState extends State<Register> {
                   },
                   itemCount: pages.length,
                   onPageChanged: (currentPosition) {
+                    FocusScope.of(context).unfocus();
                     setState(() {
                       progressValue = (currentPosition + 1) / pages.length;
                     });
