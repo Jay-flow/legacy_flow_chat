@@ -3,7 +3,7 @@ import 'package:flow_chat/components/circle_icon_button.dart';
 import 'package:flow_chat/components/circle_image.dart';
 import 'package:flow_chat/mocks/user.dart';
 import 'package:flow_chat/pages/settings.dart';
-import 'package:flow_chat/utils/asset.dart' as Asset;
+import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:get/get.dart';
@@ -88,7 +88,7 @@ class _MyState extends State<My> {
                         pagination: SwiperPagination(
                           alignment: Alignment.bottomCenter,
                           builder: DotSwiperPaginationBuilder(
-                            color: Asset.Colors.grey,
+                            color: asset.Colors.grey,
                             activeColor: Theme.of(context).accentColor,
                           ),
                         ),

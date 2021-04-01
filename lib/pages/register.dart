@@ -3,7 +3,7 @@ import 'package:flow_chat/components/loading_container.dart';
 import 'package:flow_chat/models/user.dart' as model;
 import 'package:flow_chat/navigations/main_top_tab.dart';
 import 'package:flow_chat/pages/register_phone_auth.dart';
-import 'package:flow_chat/utils/asset.dart' as Asset;
+import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flow_chat/utils/firebase_authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -105,7 +105,7 @@ class _RegisterState extends State<Register> {
             children: <Widget>[
               LinearProgressIndicator(
                 value: progressValue,
-                backgroundColor: Asset.Colors.grey,
+                backgroundColor: asset.Colors.grey,
                 valueColor: AlwaysStoppedAnimation<Color>(
                   Theme.of(context).primaryColor,
                 ),

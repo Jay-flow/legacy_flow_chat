@@ -23,7 +23,7 @@ class _RegisterPhoneNumberState extends State<RegisterPhoneNumber> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: kInputPagePadding,
+      padding: inputPagePadding,
       child: InputPage(
         title: '휴대폰 번호',
         body: Column(
@@ -41,9 +41,6 @@ class _RegisterPhoneNumberState extends State<RegisterPhoneNumber> {
               textValue: widget.user.phoneNumber,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
-            SizedBox(
-              height: 70,
-            )
           ],
         ),
         buttonText: '인증하기',

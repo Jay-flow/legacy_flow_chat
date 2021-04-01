@@ -36,7 +36,7 @@ class _RegisterGenderState extends State<RegisterGender> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: kInputPagePadding,
+      padding: inputPagePadding,
       child: InputPage(
         title: '성별',
         body: ListView.builder(
@@ -69,7 +69,7 @@ class _RegisterGenderState extends State<RegisterGender> {
             widget.user.gender = gender;
             widget.userInputDone();
           } else {
-            Get.snackbar(kAppName, "성별 선택은 필수 입니다.");
+            Get.snackbar(appName, "성별 선택은 필수 입니다.");
           }
         },
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flow_chat/utils/asset.dart' as Asset;
+import 'package:flow_chat/utils/asset.dart' as asset;
 
 class LoginButton extends StatelessWidget {
   LoginButton({
@@ -24,7 +24,7 @@ class LoginButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100.0),
           side: BorderSide(
-            color: Asset.Colors.white,
+            color: asset.Colors.white,
           ),
         ),
         padding: EdgeInsets.symmetric(vertical: 11),

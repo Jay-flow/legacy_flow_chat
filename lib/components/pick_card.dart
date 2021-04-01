@@ -24,7 +24,7 @@ class PickCard extends StatelessWidget {
         ),
         child: FadeInImage.assetNetwork(
           fit: BoxFit.cover,
-          placeholder: kLoadingImagePath,
+          placeholder: loadingImagePath,
           image:
               'https://image.chosun.com/sitedata/image/201905/19/2019051900415_0.jpg',
         ),

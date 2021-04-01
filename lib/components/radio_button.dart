@@ -1,5 +1,5 @@
 import 'package:flow_chat/models/radio_model.dart';
-import 'package:flow_chat/utils/asset.dart' as Asset;
+import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flutter/material.dart';
 
 class RadioButton extends StatefulWidget {
@@ -24,10 +24,10 @@ class _RadioButtonState extends State<RadioButton> {
                 fontSize: 18.0)),
       ),
       decoration: BoxDecoration(
-        color: radio.isSelected ? Asset.Colors.purple : Colors.transparent,
+        color: radio.isSelected ? asset.Colors.pastelGreen : Colors.transparent,
         border: Border.all(
           width: 1.0,
-          color: Asset.Colors.purple,
+          color: asset.Colors.pastelGreen,
         ),
         borderRadius: const BorderRadius.all(
           Radius.circular(8.0),

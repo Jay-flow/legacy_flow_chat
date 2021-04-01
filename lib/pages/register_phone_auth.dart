@@ -30,7 +30,7 @@ class _RegisterPhoneAuthState extends State<RegisterPhoneAuth> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: kInputPagePadding,
+      padding: inputPagePadding,
       child: InputPage(
         title: '인증 번호',
         body: Column(

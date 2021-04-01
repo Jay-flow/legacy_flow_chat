@@ -1,5 +1,6 @@
 import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flow_chat/utils/asset.dart' as asset;
 
 import 'button.dart';
 
@@ -35,7 +36,7 @@ class _InputPageState extends State<InputPage> {
         children: <Widget>[
           Text(
             widget.title,
-            style: kTitleTextStyle.copyWith(
+            style: titleTextStyle.copyWith(
               color: Theme.of(context).primaryColorDark,
               fontWeight: FontWeight.normal,
             ),
@@ -51,6 +52,8 @@ class _InputPageState extends State<InputPage> {
             child: Button(
               onPressed: () => widget.buttonOnPressed(_formKey),
               buttonText: widget.buttonText,
+              buttonColor: asset.Colors.white,
+              textColor: asset.Colors.blueBlack,
             ),
           )
         ],

@@ -33,7 +33,7 @@ class PickMeProfileCard extends StatelessWidget {
           children: <Widget>[
             FadeInImage.assetNetwork(
               fit: BoxFit.cover,
-              placeholder: kLoadingImagePath,
+              placeholder: loadingImagePath,
               image: profileImagePath,
             ),
             isVIP

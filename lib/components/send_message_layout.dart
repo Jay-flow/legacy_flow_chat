@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flow_chat/utils/asset.dart' as Asset;
+import 'package:flow_chat/utils/asset.dart' as asset;
 
 class SendMessageLayout extends StatefulWidget {
   final Function sendMessage;
@@ -44,7 +44,7 @@ class _SendMessageLayoutState extends State<SendMessageLayout> {
           children: [
             Container(
               width: inputMessageWidth,
-              color: Asset.Colors.grey,
+              color: asset.Colors.grey,
               child: TextFormField(
                 controller: messageController,
                 decoration: const InputDecoration(

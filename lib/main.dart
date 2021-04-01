@@ -3,7 +3,7 @@ import 'package:flow_chat/pages/chat.dart';
 import 'package:flow_chat/pages/login.dart';
 import 'package:flow_chat/pages/register.dart';
 import 'package:flow_chat/pages/settings.dart';
-import 'package:flow_chat/utils/asset.dart' as Asset;
+import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,13 +28,13 @@ class FlowChat extends StatelessWidget {
 
         if (snapshot.connectionState == ConnectionState.done) {
           return GetMaterialApp(
-            title: kAppName,
+            title: appName,
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              primaryColor: Asset.Colors.hotPink,
-              accentColor: Asset.Colors.pastelGreen,
-              primaryColorDark: Asset.Colors.blueBlack,
-              primaryColorLight: Asset.Colors.skyBlue,
+              primaryColor: asset.Colors.hotPink,
+              accentColor: asset.Colors.pastelGreen,
+              primaryColorDark: asset.Colors.blueBlack,
+              primaryColorLight: asset.Colors.skyBlue,
               appBarTheme: AppBarTheme(
                 color: Colors.white,
                 textTheme: TextTheme(

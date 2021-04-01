@@ -1,6 +1,6 @@
 import 'package:flow_chat/components/input_page.dart';
 import 'package:flow_chat/models/user.dart';
-import 'package:flow_chat/utils/asset.dart' as Asset;
+import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -35,11 +35,11 @@ class _RegisterAgeState extends State<RegisterAge> {
                 border: Border(
                   top: BorderSide(
                     width: 1.0,
-                    color: Asset.Colors.grey,
+                    color: asset.Colors.grey,
                   ),
                   bottom: BorderSide(
                     width: 1.0,
-                    color: Asset.Colors.grey,
+                    color: asset.Colors.grey,
                   ),
                 ),
               ),

@@ -47,7 +47,7 @@ class _UnderlineTextFieldState extends State<UnderlineTextField> {
         obscureText: widget.obscureText,
         textAlign: widget.textAlign,
         keyboardType: widget.keyboardType,
-        decoration: kTextFieldDecoration.copyWith(
+        decoration: textFieldDecoration.copyWith(
           hintText: widget.hintText,
         ),
         onTap: widget.onTab,

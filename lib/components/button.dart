@@ -1,4 +1,4 @@
-import 'package:flow_chat/utils/asset.dart' as Asset;
+import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
@@ -6,11 +6,13 @@ class Button extends StatelessWidget {
     @required this.onPressed,
     @required this.buttonText,
     this.fontWeight = FontWeight.normal,
-    this.buttonColor = Asset.Colors.skyBlue,
+    this.buttonColor = asset.Colors.skyBlue,
+    this.textColor = asset.Colors.white,
   });
 
   final FontWeight fontWeight;
   final Color buttonColor;
+  final Color textColor;
   final Function onPressed;
   final String buttonText;
 
@@ -29,7 +31,7 @@ class Button extends StatelessWidget {
           style: TextStyle(
             fontWeight: fontWeight,
             fontSize: 16,
-            color: Colors.white,
+            color: textColor,
           ),
         ),
       ),

@@ -22,7 +22,7 @@ class _RegisterNicknameState extends State<RegisterNickname> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: kInputPagePadding,
+      padding: inputPagePadding,
       child: InputPage(
         title: '닉네임',
         body: Column(

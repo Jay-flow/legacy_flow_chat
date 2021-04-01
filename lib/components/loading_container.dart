@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flow_chat/utils/asset.dart' as Asset;
+import 'package:flow_chat/utils/asset.dart' as asset;
 
 class LoadingContainer extends StatelessWidget {
   LoadingContainer({this.child, this.isLoading});
@@ -18,7 +18,7 @@ class LoadingContainer extends StatelessWidget {
                 color: Colors.black.withOpacity(0.3),
                 child: Center(
                   child: SpinKitFadingCircle(
-                    color: Asset.Colors.white,
+                    color: asset.Colors.white,
                   ),
                 ),
               )

@@ -17,7 +17,7 @@ class CircleImage extends StatelessWidget {
         fit: BoxFit.cover,
         width: size,
         height: size,
-        placeholder: kLoadingImagePath,
+        placeholder: loadingImagePath,
         image: imagePath,
       ),
     );

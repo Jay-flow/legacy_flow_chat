@@ -7,11 +7,10 @@ import 'package:get/get.dart';
 import 'constants.dart';
 
 class FirebaseAuthentication {
-  FirebaseAuthentication({
-    @required this.onSuccess,
-    @required this.onFail,
-    @required this.loadingStateChange
-  });
+  FirebaseAuthentication(
+      {@required this.onSuccess,
+      @required this.onFail,
+      @required this.loadingStateChange});
   final Function onSuccess;
   final Function onFail;
   final Function loadingStateChange;
@@ -39,7 +38,7 @@ class FirebaseAuthentication {
   }
 
   _alreadyRegisteredUserHandling() async {
-    Get.snackbar(kAppName, "이미 가입된 회원 정보가 있습니다.");
+    Get.snackbar(appName, "이미 가입된 회원 정보가 있습니다.");
     // await user.localUserDataSave();
     // Navigator.pushReplacementNamed(context, PrayerInUs.id);
   }
@@ -50,17 +49,16 @@ class FirebaseAuthentication {
       _limitTimer.cancel();
       _isAlertRetrievalTimeout = false;
       // if (await _isExistUser()) return _alreadyRegisteredUserHandling();
-      Get.snackbar(kAppName, "인증되었습니다.");
+      Get.snackbar(appName, "인증되었습니다.");
       onSuccess();
     } on FirebaseAuthException catch (e) {
       if (e.code == "invalid-verification-code") {
-        Get.snackbar(kAppName, "인증번호가 맞지 않습니다.\n한번더 확인 후 입력해주세요.");
+        Get.snackbar(appName, "인증번호가 맞지 않습니다.\n한번더 확인 후 입력해주세요.");
       } else {
         _phoneAuthFail("인증과정 중 에러가 발생했습니다");
       }
     }
   }
-
 
   _phoneCodeSent(String verificationId, int resendToken) {
     _verificationId = verificationId;
@@ -83,7 +81,6 @@ class FirebaseAuthentication {
     }
   }
 
-
   phoneAuthMessage(String phoneNumber) async {
     this.loadingStateChange(true);
     await _firebaseAuth
@@ -101,31 +98,26 @@ class FirebaseAuthentication {
   }
 
   _phoneAuthFail(String message, {bool isCancelTimer = true}) {
-    Get.snackbar(kAppName, message);
+    Get.snackbar(appName, message);
     this.onFail();
-    if(isCancelTimer && _limitTimer != null) {
+    if (isCancelTimer && _limitTimer != null) {
       this.inputLimitTime = inputLimitTimeSec;
       _limitTimer.cancel();
     }
   }
 
-
-
   void countDownLimitTime() {
     const oneSec = const Duration(seconds: 1);
-    _limitTimer = new Timer.periodic(
-      oneSec,
-          (Timer timer)  {
-          if (this.inputLimitTime < 1) {
-            this._limitTimer.cancel();
-          } else {
-            this.inputLimitTime -= 1;
-            if (_updateLimitTime != null) {
-              _updateLimitTime();
-            }
-          }
+    _limitTimer = new Timer.periodic(oneSec, (Timer timer) {
+      if (this.inputLimitTime < 1) {
+        this._limitTimer.cancel();
+      } else {
+        this.inputLimitTime -= 1;
+        if (_updateLimitTime != null) {
+          _updateLimitTime();
         }
-    );
+      }
+    });
   }
 
   verifyAuthNumber(String smsCode) async {

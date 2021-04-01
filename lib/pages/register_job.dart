@@ -19,7 +19,7 @@ class _RegisterJobState extends State<RegisterJob> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: kInputPagePadding,
+      padding: inputPagePadding,
       child: InputPage(
         title: '직업(전공)',
         body: Column(
