@@ -103,24 +103,21 @@ class _MyState extends State<My> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.only(bottom: 50.0, left: 15.0),
                           child: CircleIconButton(
                             icon: Icons.settings,
                             onPressed: () => Get.toNamed(Settings.name),
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 50.0),
                           child: CircleIconButton(
                             icon: Icons.camera_alt,
                             onPressed: () => _pictureChange(),
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(bottom: 50.0, right: 15.0),
                           child: CircleIconButton(
                             icon: Icons.edit,
                             onPressed: () {},
