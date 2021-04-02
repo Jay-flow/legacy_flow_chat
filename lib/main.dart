@@ -34,7 +34,7 @@ class _FlowChatState extends State<FlowChat> {
 
   void _init() async {
     await Firebase.initializeApp();
-    _findUser();
+    await _findUser();
     setState(() {
       _isLoading = false;
     });
@@ -45,7 +45,15 @@ class _FlowChatState extends State<FlowChat> {
     final String uid = await userController.getLocalUserData();
     User firebaseUser = FirebaseAuth.instance.currentUser;
     if (uid != null && firebaseUser != null) {
-      _isExistentUser = await userController.isExistentUser(uid);
+      Map<String, dynamic> cloudUser = await userController.getCloudUserData(uid);
+      if(cloudUser != null) {
+        userController.setUser(cloudUser);
+        userController.setUserListener(uid);
+        userController.updateStartedAtInCloudFireStore();
+        _isExistentUser = true;
+      } else {
+        userController.deleteLocalUserData();
+      }
     }
   }
 

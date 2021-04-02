@@ -44,16 +44,16 @@ class UserController extends GetxController {
     return user.data();
   }
 
-  _setUserListener(String uid) async {
+  setUserListener(String uid) async {
     DocumentSnapshot user = await userCollection.doc(uid).get();
     user.reference.snapshots().listen((event) {
       if (event.data() != null) {
-        this._setUser(event.data());
+        this.setUser(event.data());
       }
     });
   }
 
-  _setUser(userData) {
+  setUser(userData) {
     user.value.uid = userData['uid'];
     user.value.name = userData['name'];
     user.value.profileImagePath = userData['profileImagePath'];
@@ -68,24 +68,12 @@ class UserController extends GetxController {
     user.value.deviceToken = userData['deviceToken'];
   }
 
-  Future<bool> isExistentUser(String uid) async {
-    Map<String, dynamic> userData = await this.getCloudUserData(uid);
-    if (userData != null) {
-      this._setUser(userData);
-      this._setUserListener(uid);
-      this._updateStartedAtInCloudFireStore();
-      return true;
-    }
-    this._deleteLocalUserData();
-    return false;
-  }
-
-  _deleteLocalUserData() async {
+  deleteLocalUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.clear();
   }
 
-  void _updateStartedAtInCloudFireStore() {
+  void updateStartedAtInCloudFireStore() {
     userCollection.doc(user.value.uid).update({
       'startedAt': Timestamp.now(),
     });
