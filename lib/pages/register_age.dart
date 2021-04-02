@@ -26,34 +26,36 @@ class _RegisterAgeState extends State<RegisterAge> {
       padding: EdgeInsets.all(30.0),
       child: InputPage(
         title: "나이",
-        body: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            NumberPicker(
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    width: 1.0,
-                    color: asset.Colors.grey,
-                  ),
-                  bottom: BorderSide(
-                    width: 1.0,
-                    color: asset.Colors.grey,
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              NumberPicker(
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(
+                      width: 1.0,
+                      color: asset.Colors.grey,
+                    ),
+                    bottom: BorderSide(
+                      width: 1.0,
+                      color: asset.Colors.grey,
+                    ),
                   ),
                 ),
+                value: _currentPickAge,
+                minValue: 15,
+                maxValue: 70,
+                onChanged: (newValue) => setState(
+                  () => _currentPickAge = newValue,
+                ),
               ),
-              value: _currentPickAge,
-              minValue: 15,
-              maxValue: 70,
-              onChanged: (newValue) => setState(
-                () => _currentPickAge = newValue,
-              ),
-            ),
-            SizedBox(
-              height: 30,
-            )
-          ],
+              SizedBox(
+                height: 30,
+              )
+            ],
+          ),
         ),
         buttonText: '다음',
         buttonOnPressed: (GlobalKey<FormState> key) {

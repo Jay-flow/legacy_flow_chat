@@ -12,16 +12,17 @@ class UserController extends GetxController {
 
   Future<String> getLocalUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('phoneNumber');
+    return prefs.getString('uid');
   }
 
   Future<void> setLocalUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('phoneNumber', user.value.phoneNumber);
+    prefs.setString('uid', user.value.uid);
   }
 
-  Future<void> cloudUserDataSave() async {
-    await userCollection.doc(user.value.phoneNumber).set({
+  Future<void> cloudUserDataSave(String uid) async {
+    await userCollection.doc(uid).set({
+      'uid': user.value.uid,
       'name': user.value.name,
       'profileImagePath': user.value.profileImagePath,
       'phoneNumber': user.value.phoneNumber,
@@ -38,13 +39,13 @@ class UserController extends GetxController {
     });
   }
 
-  Future<Map<String, dynamic>> _getCloudUserData(phoneNumber) async {
-    DocumentSnapshot user = await userCollection.doc(phoneNumber).get();
+  Future<Map<String, dynamic>> getCloudUserData(String uid) async {
+    DocumentSnapshot user = await userCollection.doc(uid).get();
     return user.data();
   }
 
-  _setUserListener(String phoneNumber) async {
-    DocumentSnapshot user = await userCollection.doc(phoneNumber).get();
+  _setUserListener(String uid) async {
+    DocumentSnapshot user = await userCollection.doc(uid).get();
     user.reference.snapshots().listen((event) {
       if (event.data() != null) {
         this._setUser(event.data());
@@ -53,6 +54,7 @@ class UserController extends GetxController {
   }
 
   _setUser(userData) {
+    user.value.uid = userData['uid'];
     user.value.name = userData['name'];
     user.value.profileImagePath = userData['profileImagePath'];
     user.value.phoneNumber = userData['phoneNumber'];
@@ -66,11 +68,11 @@ class UserController extends GetxController {
     user.value.deviceToken = userData['deviceToken'];
   }
 
-  Future<bool> isExistentUser(phoneNumber) async {
-    Map<String, dynamic> userData = await this._getCloudUserData(phoneNumber);
+  Future<bool> isExistentUser(String uid) async {
+    Map<String, dynamic> userData = await this.getCloudUserData(uid);
     if (userData != null) {
       this._setUser(userData);
-      this._setUserListener(phoneNumber);
+      this._setUserListener(uid);
       this._updateStartedAtInCloudFireStore();
       return true;
     }
@@ -84,7 +86,7 @@ class UserController extends GetxController {
   }
 
   void _updateStartedAtInCloudFireStore() {
-    userCollection.doc(user.value.phoneNumber).update({
+    userCollection.doc(user.value.uid).update({
       'startedAt': Timestamp.now(),
     });
   }

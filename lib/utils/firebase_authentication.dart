@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flow_chat/controllers/user_controller.dart';
+import 'package:flow_chat/models/user.dart' as model;
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -8,10 +10,10 @@ import 'constants.dart';
 
 class FirebaseAuthentication {
   FirebaseAuthentication(
-      {@required this.onSuccess,
+      {@required this.setPhoneAuthCredential,
       @required this.onFail,
       @required this.loadingStateChange});
-  final Function onSuccess;
+  final Function setPhoneAuthCredential;
   final Function onFail;
   final Function loadingStateChange;
 
@@ -28,29 +30,23 @@ class FirebaseAuthentication {
     _updateLimitTime = updateCallback;
   }
 
-  Future<bool> _isExistUser() async {
-    // Map<String, dynamic> userData =
-    //     await user.getCloudUserData(user.phoneNumber);
-    // if (userData != null) {
-    //   return true;
-    // }
-    // return false;
-  }
-
-  _alreadyRegisteredUserHandling() async {
-    Get.snackbar(appName, "이미 가입된 회원 정보가 있습니다.");
-    // await user.localUserDataSave();
-    // Navigator.pushReplacementNamed(context, PrayerInUs.id);
+  Future<bool> _isAlreadySignInUser(String uid) async {
+    UserController userController = Get.put(UserController());
+    Map<String, dynamic> userData = await userController.getCloudUserData(uid);
+    if (userData != null) return true;
+    return false;
   }
 
   _phoneVerificationCompleted(PhoneAuthCredential credential) async {
     try {
-      await _firebaseAuth.signInWithCredential(credential);
       _limitTimer.cancel();
       _isAlertRetrievalTimeout = false;
-      // if (await _isExistUser()) return _alreadyRegisteredUserHandling();
       Get.snackbar(appName, "인증되었습니다.");
-      onSuccess();
+      final UserCredential userCredential =
+          await _firebaseAuth.signInWithCredential(credential);
+      bool _isAlreadySignIn =
+          await _isAlreadySignInUser(userCredential.user.uid);
+      setPhoneAuthCredential(userCredential.user.uid, _isAlreadySignIn);
     } on FirebaseAuthException catch (e) {
       if (e.code == "invalid-verification-code") {
         Get.snackbar(appName, "인증번호가 맞지 않습니다.\n한번더 확인 후 입력해주세요.");

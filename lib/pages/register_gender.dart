@@ -11,12 +11,12 @@ class RegisterGender extends StatefulWidget {
   RegisterGender({
     @required this.next,
     @required this.user,
-    @required this.userInputDone,
+    @required this.signIn,
   });
 
   final Function next;
   final User user;
-  final Function userInputDone;
+  final Function signIn;
 
   @override
   _RegisterGenderState createState() => _RegisterGenderState();
@@ -67,7 +67,7 @@ class _RegisterGenderState extends State<RegisterGender> {
             String gender =
                 pickGender == "남" ? Gender.male.value : Gender.female.value;
             widget.user.gender = gender;
-            widget.userInputDone();
+            widget.signIn();
           } else {
             Get.snackbar(appName, "성별 선택은 필수 입니다.");
           }

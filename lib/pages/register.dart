@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flow_chat/components/loading_container.dart';
 import 'package:flow_chat/controllers/user_controller.dart';
 import 'package:flow_chat/models/user.dart' as model;
+import 'package:flow_chat/navigations/main_top_tab.dart';
 import 'package:flow_chat/pages/register_phone_auth.dart';
 import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flow_chat/utils/firebase_authentication.dart';
@@ -25,6 +27,7 @@ class _RegisterState extends State<Register> {
   bool _isLoading = false;
   List<Widget> pages;
   final PageController _pageController = PageController();
+  PhoneAuthCredential credential;
   double progressValue;
 
   void _loadingStateChange(isLoading) => setState(() => _isLoading = isLoading);
@@ -50,25 +53,26 @@ class _RegisterState extends State<Register> {
     });
   }
 
-  void userInputDone() async {
-    _loadingStateChange(true);
-    await _signUp();
-    _loadingStateChange(false);
-    // Get.toNamed(MainTopTab.name);
+  void _setRegistrationInfo(String uid, bool isAlreadySignIn) {
+    this.user.uid = uid;
+    isAlreadySignIn ? _signIn(isAlreadySignIn: true) : _nextPage();
   }
 
-  Future<void> _signUp() async {
+  Future<void> _signIn({bool isAlreadySignIn = false}) async {
+    _loadingStateChange(true);
     UserController userController = Get.put(UserController());
     userController.updateUser(user);
     await userController.setLocalUserData();
-    await userController.cloudUserDataSave();
+    if (!isAlreadySignIn) await userController.cloudUserDataSave(this.user.uid);
+    _loadingStateChange(false);
+    Get.toNamed(MainTopTab.name);
   }
 
   @override
   void initState() {
     super.initState();
     FirebaseAuthentication firebaseAuthentication = FirebaseAuthentication(
-      onSuccess: _nextPage,
+      setPhoneAuthCredential: _setRegistrationInfo,
       onFail: _onFailAuth,
       loadingStateChange: _loadingStateChange,
     );
@@ -97,7 +101,7 @@ class _RegisterState extends State<Register> {
       RegisterGender(
         next: _nextPage,
         user: user,
-        userInputDone: userInputDone,
+        signIn: _signIn,
       ),
     ];
     progressValue = 1.0 / pages.length;

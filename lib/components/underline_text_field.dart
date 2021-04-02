@@ -40,7 +40,6 @@ class _UnderlineTextFieldState extends State<UnderlineTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 75,
       child: TextFormField(
         validator: widget.validator,
         controller: _textController,

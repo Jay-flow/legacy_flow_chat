@@ -15,6 +15,7 @@ extension GenderExtension on Gender {
 
 class User {
   User({
+    this.uid,
     this.name,
     this.profileImagePath,
     this.phoneNumber,
@@ -28,6 +29,7 @@ class User {
     this.deviceToken,
   });
 
+  String uid;
   String gender;
   String name;
   String profileImagePath;
