@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flow_chat/components/loading_container.dart';
 import 'package:flow_chat/controllers/user_controller.dart';
@@ -42,7 +43,8 @@ class _FlowChatState extends State<FlowChat> {
   Future<void> _findUser() async {
     UserController userController = Get.put(UserController());
     final String phoneNumber = await userController.getLocalUserData();
-    if (phoneNumber != null) {
+    User firebaseUser = FirebaseAuth.instance.currentUser;
+    if (phoneNumber != null && firebaseUser != null) {
       _isExistentUser = await userController.isExistentUser(phoneNumber);
     }
   }
