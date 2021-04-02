@@ -2,7 +2,7 @@ import 'dart:io' show Platform;
 
 import 'package:flow_chat/components/login_button.dart';
 import 'package:flow_chat/components/policy_info.dart';
-import 'package:flow_chat/pages/register.dart';
+import 'package:flow_chat/views/register.dart';
 import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';

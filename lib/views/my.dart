@@ -2,7 +2,7 @@ import 'package:flow_chat/components/button.dart';
 import 'package:flow_chat/components/circle_icon_button.dart';
 import 'package:flow_chat/components/circle_image.dart';
 import 'package:flow_chat/mocks/user.dart';
-import 'package:flow_chat/pages/settings.dart';
+import 'package:flow_chat/views/settings.dart';
 import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';

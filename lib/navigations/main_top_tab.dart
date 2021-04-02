@@ -1,5 +1,5 @@
-import 'package:flow_chat/pages/my.dart';
-import 'package:flow_chat/pages/pick.dart';
+import 'package:flow_chat/views/my.dart';
+import 'package:flow_chat/views/pick.dart';
 import 'package:flutter/material.dart';
 
 import 'match_bottom_tab.dart';

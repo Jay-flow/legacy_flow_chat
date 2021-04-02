@@ -3,7 +3,7 @@ import 'package:flow_chat/components/loading_container.dart';
 import 'package:flow_chat/controllers/user_controller.dart';
 import 'package:flow_chat/models/user.dart' as model;
 import 'package:flow_chat/navigations/main_top_tab.dart';
-import 'package:flow_chat/pages/register_phone_auth.dart';
+import 'package:flow_chat/views/register_phone_auth.dart';
 import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flow_chat/utils/firebase_authentication.dart';
 import 'package:flutter/material.dart';
