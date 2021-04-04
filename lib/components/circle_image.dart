@@ -7,7 +7,7 @@ class CircleImage extends StatelessWidget {
 
   CircleImage({
     @required this.imagePath,
-    this.size = 140,
+    this.size = 120,
   });
 
   @override
