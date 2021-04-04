@@ -3,12 +3,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flow_chat/components/loading_container.dart';
 import 'package:flow_chat/controllers/user_controller.dart';
 import 'package:flow_chat/navigations/main_top_tab.dart';
+import 'package:flow_chat/views/chat.dart';
 import 'package:flow_chat/views/login.dart';
 import 'package:flow_chat/views/register.dart';
 import 'package:flow_chat/views/settings.dart';
 import 'package:flow_chat/utils/asset.dart' as asset;
 import 'package:flow_chat/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -45,8 +47,9 @@ class _FlowChatState extends State<FlowChat> {
     final String uid = await userController.getLocalUserData();
     User firebaseUser = FirebaseAuth.instance.currentUser;
     if (uid != null && firebaseUser != null) {
-      Map<String, dynamic> cloudUser = await userController.getCloudUserData(uid);
-      if(cloudUser != null) {
+      Map<String, dynamic> cloudUser =
+          await userController.getCloudUserData(uid);
+      if (cloudUser != null) {
         userController.setUser(cloudUser);
         userController.setUserListener(uid);
         userController.updateStartedAtInCloudFireStore();
@@ -59,41 +62,47 @@ class _FlowChatState extends State<FlowChat> {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: appName,
-      debugShowCheckedModeBanner: _isDebugShowCheckedModeBanner,
-      theme: ThemeData(
-        primaryColor: asset.Colors.hotPink,
-        accentColor: asset.Colors.pastelGreen,
-        primaryColorDark: asset.Colors.blueBlack,
-        primaryColorLight: asset.Colors.skyBlue,
-        appBarTheme: AppBarTheme(
-          color: Colors.white,
-          textTheme: TextTheme(
-            headline6: TextStyle(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: Colors.white,
+      ),
+      child: GetMaterialApp(
+        title: appName,
+        debugShowCheckedModeBanner: _isDebugShowCheckedModeBanner,
+        theme: ThemeData(
+          primaryColor: asset.Colors.hotPink,
+          accentColor: asset.Colors.pastelGreen,
+          primaryColorDark: asset.Colors.blueBlack,
+          primaryColorLight: asset.Colors.skyBlue,
+          appBarTheme: AppBarTheme(
+            color: Colors.white,
+            textTheme: TextTheme(
+              headline6: TextStyle(
+                color: Colors.black,
+                fontSize: 20.0,
+              ),
+            ),
+            iconTheme: IconThemeData(
               color: Colors.black,
-              fontSize: 20.0,
             ),
           ),
-          iconTheme: IconThemeData(
-            color: Colors.black,
-          ),
         ),
+        home: LoadingContainer(
+          isLoading: _isLoading,
+          child: _isLoading
+              ? SizedBox.shrink()
+              : _isExistentUser
+                  ? MainTopTab()
+                  : Register(),
+        ),
+        getPages: [
+          GetPage(name: MainTopTab.name, page: () => MainTopTab()),
+          GetPage(name: Login.name, page: () => Login()),
+          GetPage(name: Register.name, page: () => Register()),
+          GetPage(name: Settings.name, page: () => Settings()),
+          GetPage(name: Chat.name, page: () => Chat()),
+        ],
       ),
-      home: LoadingContainer(
-        isLoading: _isLoading,
-        child: _isLoading
-            ? SizedBox.shrink()
-            : _isExistentUser
-                ? MainTopTab()
-                : Register(),
-      ),
-      getPages: [
-        GetPage(name: MainTopTab.name, page: () => MainTopTab()),
-        GetPage(name: Login.name, page: () => Login()),
-        GetPage(name: Register.name, page: () => Register()),
-        GetPage(name: Settings.name, page: () => Settings()),
-      ],
     );
   }
 }

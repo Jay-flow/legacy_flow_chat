@@ -53,8 +53,10 @@ class _MyState extends State<My> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Column(
-              mainAxisSize: MainAxisSize.max,
               children: [
+                SizedBox(
+                  height: 15,
+                ),
                 Container(
                   child: CircleImage(
                     imagePath: UserMock.user.profileImagePath,
@@ -69,8 +71,33 @@ class _MyState extends State<My> {
                 ),
               ],
             ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Container(
+                  child: CircleIconButton(
+                    icon: Icons.settings,
+                    onPressed: () => Get.toNamed(Settings.name),
+                  ),
+                ),
+                Container(
+                  child: CircleIconButton(
+                    icon: Icons.camera_alt,
+                    onPressed: () => _pictureChange(),
+                  ),
+                ),
+                Container(
+                  child: CircleIconButton(
+                    icon: Icons.edit,
+                    onPressed: () {},
+                  ),
+                ),
+              ],
+            ),
             Container(
-              height: 180,
+              height: 175,
               child: ClipRRect(
                 borderRadius: BorderRadius.all(
                   Radius.circular(12),
@@ -97,31 +124,6 @@ class _MyState extends State<My> {
                   layout: SwiperLayout.DEFAULT,
                 ),
               ),
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                Container(
-                  child: CircleIconButton(
-                    icon: Icons.settings,
-                    onPressed: () => Get.toNamed(Settings.name),
-                  ),
-                ),
-                Container(
-                  child: CircleIconButton(
-                    icon: Icons.camera_alt,
-                    onPressed: () => _pictureChange(),
-                  ),
-                ),
-                Container(
-                  child: CircleIconButton(
-                    icon: Icons.edit,
-                    onPressed: () {},
-                  ),
-                ),
-              ],
             ),
             SizedBox(
               height: 50,

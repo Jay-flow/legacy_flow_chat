@@ -4,6 +4,8 @@ import 'package:flow_chat/mocks/user.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {
+  static const String name = "/chat";
+
   @override
   _ChatState createState() => _ChatState();
 }

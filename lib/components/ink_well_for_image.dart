@@ -22,8 +22,8 @@ class InkWellForImage extends StatelessWidget {
             child: InkWell(
               focusColor: Colors.white,
               hoverColor: Colors.white,
-              highlightColor: Colors.white.withOpacity(0.2),
-              splashColor: Colors.white,
+              highlightColor: Colors.black.withOpacity(0.2),
+              splashColor: Colors.white.withOpacity(0.2),
               onTap: onTap,
             ),
           ),

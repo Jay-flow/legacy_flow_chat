@@ -28,7 +28,7 @@ class _SendMessageLayoutState extends State<SendMessageLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final sendButtonWidth = 80;
+    final sendButtonWidth = 50;
     final deviceWidth = MediaQuery.of(context).size.width;
     final inputMessageWidth = deviceWidth - sendButtonWidth;
 
@@ -60,17 +60,15 @@ class _SendMessageLayoutState extends State<SendMessageLayout> {
               bottom: 10,
               child: Container(
                 width: sendButtonWidth.toDouble(),
-                height: 25,
+                height: 27,
                 alignment: Alignment.center,
                 constraints: BoxConstraints(
                   maxHeight: 150,
                 ),
-                child: Text(
-                  "Send",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: Icon(
+                  Icons.send,
+                  color: Colors.white,
+                  size: 20.0,
                 ),
               ),
             )
