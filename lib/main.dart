@@ -93,7 +93,7 @@ class _FlowChatState extends State<FlowChat> {
               ? SizedBox.shrink()
               : _isExistentUser
                   ? MainTopTab()
-                  : Register(),
+                  : Login(),
         ),
         getPages: [
           GetPage(name: MainTopTab.name, page: () => MainTopTab()),

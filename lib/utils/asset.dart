@@ -4,14 +4,14 @@ class Icons {
   Icons._();
   static Image icKakao = Image.asset(
     'assets/icons/ic_kakao.png',
-    scale: 2,
+    scale: 2.5,
   );
-  static Image icApple = Image.asset('assets/icons/ic_apple.png', scale: 2.4);
+  static Image icApple = Image.asset('assets/icons/ic_apple.png', scale: 2.9);
   static Image icFacebook =
-      Image.asset('assets/icons/ic_facebook.png', scale: 2);
+      Image.asset('assets/icons/ic_facebook.png', scale: 2.5);
   static Image icPhone = Image.asset(
     'assets/icons/ic_phone.png',
-    scale: 2,
+    scale: 2.5,
     color: Colors.white,
   );
 }
